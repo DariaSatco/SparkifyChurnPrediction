@@ -8,7 +8,10 @@ For simplicity, we run EDA and pipeline validation with a small subset (128 MB) 
 
 ### Requirements
 ```
-
+pandas==1.1.5
+pyspark==2.4.3
+numpy==1.19.5
+sweetviz==2.1.3
 ```
 
 ### How to launch Jupyter Notebook with Spark cluster on AWS
