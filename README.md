@@ -8,6 +8,8 @@ This project is part of Udacity course.
 
 For simplicity, we run EDA and pipeline validation with a small subset (128 MB) and then run pipeline with a full dataset (12GB) on AWS cluster to get the final state of the model. 
 
+Read [medium post](https://daria-satco.medium.com/5-steps-to-build-a-churn-prediction-model-with-pyspark-ml-b62ff1e00de6) to find more details on the modelling approach and results.
+
 ### Requirements
 ```
 pandas==1.1.5
