@@ -1,7 +1,9 @@
 # Sparkify Churn prediction
 
 This project is part of Udacity course.
+\
 **Data**: Set of user events from music App, which include info about songs and artist listened, account status (free/paid), registration date, etc. 
+\
 **Objective**: Predict churn. We consider user to be churned if we see cancellation of subscription.
 
 For simplicity, we run EDA and pipeline validation with a small subset (128 MB) and then run pipeline with a full dataset (12GB) on AWS cluster to get the final state of the model. 
@@ -9,12 +11,12 @@ For simplicity, we run EDA and pipeline validation with a small subset (128 MB) 
 ### Requirements
 ```
 pandas==1.1.5
-pyspark==2.4.3
 numpy==1.19.5
+pyspark==2.4.3
 sweetviz==2.1.3
 ```
 
-### How to launch Jupyter Notebook with Spark cluster on AWS
+## How to launch Jupyter Notebook with Spark cluster on AWS
 1. Sign in to [AWS](https://aws.amazon.com) console
 2. Search "EMR" service:
 ![search emr](./readme_imgs/emr_search.png)
@@ -33,7 +35,23 @@ sweetviz==2.1.3
 
 That's it! As soon as you start cluster and notebook, Amazon will start charging you, because EMR is not included in Free Tier services. 
 
-### Structure of the project
+## Read full dataset within AWS Jupyter Notebook
+```python
+from pyspark.sql import SparkSession
+
+# Create spark session
+spark = SparkSession \
+    .builder \
+    .appName("Sparkify") \
+    .getOrCreate()
+
+# Read full sparkify dataset
+event_data = "s3n://udacity-dsnd/sparkify/sparkify_event_data.json"
+df = spark.read.json(event_data)
+df.head()
+```
+
+## Structure of the project
 * data: includes small subset `mini_sparkify_event_data.json` in ZIP format
 * EDA_reports: contains HTML reports from sample data and churn vs stayed users generated with `sweetviz` package
 * saved_models: dummy folder to put pretrained models
